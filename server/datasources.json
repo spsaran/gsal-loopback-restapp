@@ -1,0 +1,21 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "images": {
+    "name": "images",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "root": "./client/"
+  },
+  "cloudant": {
+    "host": "2e7810e1-913e-4ce5-a243-e0d04f82c26d-bluemix.cloudant.com",
+    "port": 443,
+    "database": "gsaldb",
+    "username": "2e7810e1-913e-4ce5-a243-e0d04f82c26d-bluemix",
+    "password": "ed238ea4040f78028466309ac8abd0dee30c1d3c1eaa8fe8c148ef88e576d56f",
+    "name": "Cloudant NoSQL DB-jx",
+    "connector": "cloudant"
+  }
+}

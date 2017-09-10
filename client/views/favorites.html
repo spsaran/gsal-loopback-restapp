@@ -1,0 +1,82 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Favorites</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>My Favorites</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-xs-12" ng-if="!showMenu">
+                <h3>{{message}}</h3>
+            </div>
+            <div class="col-xs-12" ng-if="showMenu">
+                 <button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right"
+                    type="button">
+                    {{showDetails ? 'Hide Details':'Show Details'}}
+                </button>
+                 <button ng-click="toggleDelete()" class="btn btn-xs btn-primary pull-right"
+                    type="button">
+                    {{showDelete ? 'Hide Delete Button':'Show Delete Button'}}
+                </button>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"
+                    ng-class="{active:isSelected(1)}">
+                    <a ng-click="select(1)"
+                     aria-controls="all menu"
+                    role="tab">Items Posted</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(2)}">
+                    <a ng-click="select(2)"
+                    aria-controls="Car"
+                     role="tab">Car</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(3)}">
+                    <a ng-click="select(3)"
+                     aria-controls="Cloths"
+                     role="tab">Cloths</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(4)}">
+                    <a  ng-click="select(4)"
+                     aria-controls="Toys"
+                     role="tab">Toys</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(5)}">
+                    <a  ng-click="select(5)"
+                     aria-controls="Furniture"
+                     role="tab">Furniture</a></li>
+                </ul>
+             
+             
+                <div class="tab-content">
+               <ul class="media-list tab-pane fade in active">
+                <li class="media" ng-repeat="favorite in favorites | filter:filtText">
+                    <div class="media-left media-middle">
+                        <a ui-sref="app.itemdetails({id: favorite.items.id})">
+                        <img class="media-object img-thumbnail"
+                        ng-src={{favorite.items.image}} alt="Uthappizza">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{favorite.items.name}}
+                        <span class="badge">{{favorite.items.price/100 | currency}}</span></h2>
+                        <p ng-show="showDetails">{{favorite.items.description}}</p>
+                         <button  ng-show="showDelete" ng-click="deleteFavorite(favorite.id)" class="btn btn-xs btn-danger pull-right"
+                    type="button">
+                          <i class="fa fa-remove"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            </div>
+            </div>
+        </div>
+
+    </div>

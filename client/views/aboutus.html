@@ -1,0 +1,163 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">About Us</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>About Us</h3>
+               <hr>
+            </div>
+        </div>
+        
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-8">
+                <h2>Our History</h2>
+                <p>Started in 2015, Electronic Garage Sale web site quickly established itself as a garage sale icon par excellence in New Jersey, USA. With its unique feature of using map to find the garage sale is the helpful for the people in USA. It helps people maximize their search and reduce the driving distance using advanced map.</p>
+                <p>Its no secret that the Internet is replacing mediums such as newspapers as the most efficient form of communicating, advertising, selling and buying. The benefits are obvious and immeasurable and doing business on the Internet is the smart way. The power of the internet! Who could argue with that?</p>
+                <div class="well">
+                    <blockquote>
+                        <p>Your site is good for buyers who don't want to waste their time going to sales that really don't have anything of interest.</p>
+                        <footer>Yogi Berra,  
+                        <cite title="Source Title">The Wit and Wisdom of Yogi Berra, P. Pepe, Diversion Books, 2016</cite></footer>
+                    </blockquote>                
+                </div>
+
+            </div>
+            <div class="col-xs-12 col-sm-4">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Facts At a Glance</h3>
+                    </div>
+                    <div class="panel-body">
+                        <dl class="dl-horizontal">
+                            <dt>Started</dt>
+                            <dd>15 Aug. 2015</dd>
+                            <dt>Major Stake Holder</dt>
+                            <dd>Win Win Solutions Inc.</dd>
+                            <dt>Last Year's Turnover</dt>
+                            <dd>$250,375</dd>
+                            <dt>Employees</dt>
+                            <dd>15</dd>
+                       </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-9">
+                <h2>Corporate Leadership</h2>
+               <ul class="media-list">
+                <li class="media" ng-repeat="leader in leaders">
+                    <div class="media-left media-middle">
+                        <a>
+                        <img class="media-object img-thumbnail"
+                        ng-src={{leader.image}} alt="Peter Pan">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">{{leader.name}}
+                        <small>{{leader.designation}}</small></h3>
+                        <p>{{leader.description}}</p>
+                    </div>
+                </li>
+            </ul>
+
+            </div>
+             <div class="col-xs-12 col-sm-3">
+                <p style="padding:20px;"></p>
+            </div>
+       </div>
+        <div class="row row-content">
+            <div class="col-xs-12 col-sm-9">
+                <h2>Facts &amp; Figures</h2>
+                <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <th>
+                            2015
+                        </th>
+                        <th>
+                            2016
+                        </th>
+                        <th>
+                            2017
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Employees
+                        </th>
+                        <td>
+                            5
+                        </td>
+                        <td>
+                            10
+                        </td>
+                        <td>
+                            15
+                        </td>
+                    
+                    </tr>
+                    <tr>
+                        <th>
+                            Guests Served
+                        </th>
+                        <td>
+                            15000
+                        </td>
+                        <td>
+                            45000
+                        </td>
+                        <td>
+                            100,000
+                        </td>
+                    
+                    </tr>
+                    <tr>
+                        <th>
+                            Special Events
+                        </th>
+                        <td>
+                            3
+                        </td>
+                        <td>
+                            20
+                        </td>
+                        <td>
+                            45
+                        </td>
+                    
+                    </tr>
+                    <tr>
+                        <th>
+                            Annual Turnover
+                        </th>
+                        <td>
+                            $100,325
+                        </td>
+                        <td>
+                            $250,375
+                        </td>
+                        <td>
+                            ~$500,000
+                        </td>
+                    
+                    </tr>
+                </table>
+                </div>
+            </div>
+             <div class="col-xs-12 col-sm-3">
+                <p style="padding:20px;"></p>
+            </div>
+       </div> 
+    </div>

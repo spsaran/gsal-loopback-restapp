@@ -1,0 +1,152 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+               <ul class="breadcrumb">
+                   <li><a href="index.html">Home</a></li>
+                   <li class="active">Sales</li>
+               </ul>
+            </div>
+            <div class="col-xs-12">
+               <h3>Sales</h3>
+               <hr>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-xs-12" ng-if="!showMenu">
+                <h3>{{message}}</h3>
+            </div>
+            <div class="col-xs-12" ng-if="showMenu">
+                 <button ng-click="toggleDetails()" class="btn btn-xs btn-primary pull-right"
+                    type="button">
+                    {{showDetails ? 'Hide Details':'Show Details'}}
+                </button>
+                 <button ng-click="toggleFavorites()" class="btn btn-xs btn-primary pull-right"
+                    type="button">
+                    {{showFavorites ? 'Hide Favorite Button':'Show Favorite Button'}}
+                </button>
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"
+                    ng-class="{active:isSelected(1)}">
+                    <a ng-click="select(1)"
+                     aria-controls="all menu"
+                    role="tab">Items Posted</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(2)}">
+                    <a ng-click="select(2)"
+                    aria-controls="Car"
+                     role="tab">Car</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(3)}">
+                    <a ng-click="select(3)"
+                     aria-controls="Cloths"
+                     role="tab">Cloths</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(4)}">
+                    <a  ng-click="select(4)"
+                     aria-controls="Toys"
+                     role="tab">Toys</a></li>
+                    <li role="presentation"
+                    ng-class="{active:isSelected(5)}">
+                    <a  ng-click="select(5)"
+                     aria-controls="Furniture"
+                     role="tab">Furniture</a></li>
+                </ul>
+             
+                <div class="tab-content">
+               <ul class="media-list tab-pane fade in active">
+                <li class="media" ng-repeat="item in items | filter:filtText">
+                    <div class="media-left media-middle">
+                        <a ui-sref="app.itemdetails({id: item.id})">
+                        <img class="media-object img-thumbnail"
+                        ng-src={{item.image}} alt="Uthappizza">
+                        </a>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{item.name}}
+                        <span class="badge">{{item.price/100 | currency}}</span></h2>
+                        <p ng-show="showDetails">{{item.description}}</p>
+                         <button  ng-show="showFavorites" ng-click="addToFavorites(item.id)" class="btn btn-xs btn-default pull-right"
+                    type="button">
+                          <i class="fa fa-heart"></i>
+                        </button>
+                    </div>
+                </li>
+            </ul>
+
+            </div>
+            <div class="">&nbsp;</div> 
+                <hr>
+            <div class="col-xs-12">
+               <h4>Add New Items for Sale</h4>
+               <hr>
+            </div>
+            <div class="col-xs-9">
+                    <ul class="list-unstyled" ng-show="itemForm.$valid && !itemForm.$pristine">
+                        <li>
+                          <blockquote>
+                             <p>{{myitem.name}}</p>
+                             <p>{{myitem.description}}</p>
+                          </blockquote>
+                        </li>
+                    </ul>
+                <form class="form-horizontal" role="form" name="itemForm" ng-submit="submitItem()" novalidate>
+                     <div class="form-group">
+                        <label class="col-sm-2 control-label" for="name">Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control input-sm" id="name" ng-model="myitem.name">
+                         </div>
+                    </div>
+                    <div class="form-group">
+                       <label for="category" class="col-sm-2 control-label">
+                        Category</label>
+                        <div class="col-sm-10">
+                            <label class="radio-inline">
+                            <input type="radio" name="category" ng-model="myitem.category"
+                             id="rating1" value="Car"> Car
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="category" ng-model="myitem.category"
+                                 id="rating2" value="Cloths"> Cloths
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="category" ng-model="myitem.category"
+                                 id="rating3" value="Toys"> Toys
+                            </label>
+                             <label class="radio-inline">
+                                <input type="radio" name="category" ng-model="myitem.category"
+                                 id="rating4" value="Furniture"> Furniture
+                            </label>
+                             <label class="radio-inline">
+                                <input type="radio" name="category" ng-model="myitem.category"
+                                 id="rating5" value="Other" checked> Other
+                            </label>
+                        </div>
+                    </div>                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="price">Price</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control input-sm" id="price" ng-model="myitem.price">
+                        </div>
+                    </div>
+                    <div class="form-group"  ng-class="{ 'has-error' : itemForm.description.$error.required && !itemForm.description.$pristine }">
+                        <label for="description" class="col-sm-2 control-label">Item Details</label>
+                        <div class="col-sm-10">
+                            <textarea class="form-control" rows="12" name="description"
+                                ng-model="myitem.description" required>
+                            </textarea>
+                         <span ng-show="itemForm.description.$error.required && !itemForm.description.$pristine" class="help-block">Your items are required.</span>
+                       </div>
+                    </div> 
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary" ng-disabled="itemForm.$invalid">Submit Item</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+                
+            </div>
+        </div>
+
+    </div>
